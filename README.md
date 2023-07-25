@@ -43,6 +43,13 @@ with torch.no_grad():
     probs = logits_per_image.softmax(dim=-1).cpu().numpy()
 
 print("Label probs:", probs)  # prints: [[0.9927937  0.00421068 0.00299572]]
+
+# extract spatial features from image
+with torch.no_grad():
+    image_spatial_features = model.encode_image(image, return_spatial=True)
+
+print(image_spatial_features.shape)
+
 ```
 
 
